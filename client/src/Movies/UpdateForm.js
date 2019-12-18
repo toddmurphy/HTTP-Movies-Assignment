@@ -2,7 +2,22 @@ import React, {useState, useEffect} from 'react';
 
 const UpdateForm = (props) => {
     //setup useState to set initial state/data for PUT form
-    
+    const [updateData, setUpdateData] = useState({
+        title: '',
+        director: '',
+        metascore: Number,
+        stars: []
+    })
+
+    //handleInputChanges
+    const handleInputChanges = (event) => {
+        setUpdateData({
+            ...updateData,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    //handleSubmit
 
     return(
         <div>
@@ -12,23 +27,23 @@ const UpdateForm = (props) => {
                     type='text'
                     name='title'
                     placeholder='Title'
-                    // value={}
-                    // onChange={handleInputChanges}
+                    value={updateData.title}
+                    onChange={handleInputChanges}
                 />
                 <input 
                     type='text'
                     name='director'
                     placeholder='Director'
-                    //value={}
-                    //onChange={handleInputChanges}
+                    value={updateData.director}
+                    onChange={handleInputChanges}
                 />
                 <input 
                     type='metascore'
                     name='metascore'
-                    //value={}
-                    //onChange={handleInputChanges}
+                    value={updateData.metascore}
+                    onChange={handleInputChanges}
                 />
-                {movies.stars.map((star, index) => {
+                {/* {movies.stars.map((star, index) => {
                     return(
                         <input 
                             key={index}
@@ -39,7 +54,7 @@ const UpdateForm = (props) => {
                             //onChange={handleInputChanges}
                         />
                     )
-                })}
+                })} */}
                 <button>Update movies</button>
             </form>
         </div>
