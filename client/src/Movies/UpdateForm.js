@@ -1,13 +1,26 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const UpdateForm = (props) => {
     //setup useState to set initial state/data for PUT form
     const [updateData, setUpdateData] = useState({
+        id: '',
         title: '',
         director: '',
-        metascore: Number,
+        metascore: Number(),
         stars: []
     })
+    console.log(props)
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/movies/${props.match.params.id}`)
+            .then(res => {
+                console.log(res.data)
+                setUpdateData(res.data)
+            })
+    },[props.match.params.id])
+    
+
 
     //handleInputChanges
     const handleInputChanges = (event) => {
@@ -18,6 +31,9 @@ const UpdateForm = (props) => {
     }
 
     //handleSubmit
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
 
     return(
         <div>
@@ -40,22 +56,18 @@ const UpdateForm = (props) => {
                 <input 
                     type='metascore'
                     name='metascore'
+                    placeholder='Metascore'
                     value={updateData.metascore}
                     onChange={handleInputChanges}
                 />
-                {/* {movies.stars.map((star, index) => {
-                    return(
-                        <input 
-                            key={index}
-                            type='text'
-                            name={movies.stars[index]}
-                            placeholder='Stars'
-                            //value={}
-                            //onChange={handleInputChanges}
-                        />
-                    )
-                })} */}
-                <button>Update movies</button>
+                <input 
+                    type='text'
+                    name=''
+                    placeholder='Stars'
+                    value={updateData.stars}
+                    onChange={handleInputChanges}
+                />
+                <button type='submit'>Update movies</button>
             </form>
         </div>
     )

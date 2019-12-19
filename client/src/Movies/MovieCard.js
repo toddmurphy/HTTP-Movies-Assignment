@@ -1,14 +1,9 @@
 import React from 'react';
 
 const MovieCard = props => {
-  const { title, director, metascore, stars, id } = props.movie;
+  const { title, director, metascore, stars } = props.movie;
 
 
-  //handleEditClick
-  const handleEditClick = (event) => {
-    event.preventDefault();
-    props.history.push(`/update-movie/${id}`)
-  }
 
   return (
     <div className="movie-card">
@@ -26,8 +21,7 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
-      <button onClick={handleEditClick}>Edit</button>
-      <button>Delete</button>
+     
     </div>
   );
 };
