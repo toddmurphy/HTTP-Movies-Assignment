@@ -4,6 +4,7 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateForm from './Movies/UpdateForm';
+import AddMovieForm from "./Movies/AddMovieForm";
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -15,6 +16,8 @@ const App = () => {
   return (
     <>
       <SavedList list={savedList} />
+      
+      
       <Route exact path="/" component={MovieList} />
       <Route
         path="/movies/:id"

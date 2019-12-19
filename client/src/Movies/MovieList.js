@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import AddMovieForm from "./AddMovieForm";
 
 
 export default class MovieList extends Component {
@@ -30,6 +31,7 @@ export default class MovieList extends Component {
   render() {
     return (
       <div className="movie-list">
+        {/* <AddMovieForm /> */}
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie}  />
         ))}
@@ -40,6 +42,7 @@ export default class MovieList extends Component {
 
 function MovieDetails({ movie, history }) {
   return (
+    
     <Link to={`/movies/${movie.id}`}>
       <MovieCard movie={movie} history={history} />
     </Link>

@@ -31,7 +31,7 @@ const UpdateForm = (props) => {
         })
     }
 
-    //handleSubmit
+    //handleSubmit 
     const handleSubmit = (event) => {
         event.preventDefault();
         //make axios PUT request to the api
@@ -65,7 +65,7 @@ const UpdateForm = (props) => {
                     onChange={handleInputChanges}
                 />
                 <input 
-                    type='metascore'
+                    type='number'
                     name='metascore'
                     placeholder='Metascore'
                     value={updateData.metascore}
