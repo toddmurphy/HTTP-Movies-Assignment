@@ -19,6 +19,14 @@ export default class MovieList extends Component {
       .catch(err => console.log(err.response));
   }
 
+  //needed this for a new render???
+  componentDidUpdate(){
+    axios
+    .get("http://localhost:5000/api/movies")
+    .then(res => this.setState({ movies: res.data }))
+    .catch(err => console.log(err.response));
+  }
+
   render() {
     return (
       <div className="movie-list">
