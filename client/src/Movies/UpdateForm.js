@@ -13,7 +13,8 @@ const UpdateForm = (props) => {
     console.log(props)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/movies/${props.match.params.id}`)
+        axios
+            .get(`http://localhost:5000/api/movies/${props.match.params.id}`)
             .then(res => {
                 console.log(res.data)
                 setUpdateData(res.data)
@@ -33,12 +34,22 @@ const UpdateForm = (props) => {
     //handleSubmit
     const handleSubmit = (event) => {
         event.preventDefault();
+        //make axios PUT request to the api
+        axios
+            .put(`http://localhost:5000/api/movies/${props.match.params.id}`, updateData)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.log('Movie not updated', error)
+            })
+            props.history.push(`/`)
     }
 
     return(
         <div>
             <h3>Put/Edit Form Component</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                     type='text'
                     name='title'
