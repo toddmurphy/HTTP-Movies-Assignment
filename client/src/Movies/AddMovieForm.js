@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const AddMovieForm = (props) => {
-    console.log(props)
+    
     //setup useState for adding and setting a new movie
     const [addMovie, setAddMovie] = useState({
         id: Date.now(),
@@ -11,7 +11,7 @@ const AddMovieForm = (props) => {
         metascore: Number,
         stars: []
     })
-    
+    console.log(addMovie)
     //handleInputChanges
     const handleInputChanges = (event) => {
         setAddMovie({
@@ -53,7 +53,7 @@ const AddMovieForm = (props) => {
 
     return(
         <div>
-            <h3>Add a new movie component</h3>
+            <h3>Add a new movie</h3>
             <form onSubmit={handleSubmit} >
                 <input 
                     type='text'
